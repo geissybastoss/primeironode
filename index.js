@@ -1,17 +1,20 @@
-require ('dotenv').config()
-const express = require ('express')
+require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
+const express = require('express');
 const path = require ('path')
+const app = express();
 
-const app = express ()
-//const port = 3000
-const routes = require('./routes/routes.js')
+// Configurações do Express
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use (express.static ('public'))
-app.use ('/', routes)
+// Importe as rotas
+const routes = require('./routes/routes');
 
+// Defina as rotas
+app.use('/', routes);
 
-//app.listen (port, ()=> {
-    app.listen (process.env.PORT, ()=> {
-    console.log (`App rodando na porta ${process.env.PORT}`)
-})
-
+// Inicie o servidor
+const PORT = process.env.PORT || 3000; // Use a porta definida nas variáveis de ambiente ou 3000 por padrão
+app.listen(PORT, () => {
+    console.log(`App rodando na porta ${PORT}`);
+});
