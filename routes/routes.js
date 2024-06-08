@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 // Importe os controladores necessários aqui
-const pessoasController = require('../controllers/PessoasController');
+const PessoasController = require('../controllers/PessoasController');
 
 // Defina as rotas aqui
-router.get('/pessoas', pessoasController.showAll);
-router.get('/pessoas/:id', pessoasController.show);
-router.post('/pessoas', pessoasController.create);
-router.put('/pessoas/:id', pessoasController.update);
-router.delete('/pessoas/:id', pessoasController.delete);
+router.get('/pessoas', PessoasController.showAll);
+router.get('/pessoas/:id', PessoasController.show);
+router.post('/pessoas', PessoasController.create);
+router.put('/pessoas/:id', PessoasController.update);
+router.delete('/pessoas/:id', PessoasController.delete);
 
 
 router.get ('/',(req, res)=> {
