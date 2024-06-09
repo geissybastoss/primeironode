@@ -14,11 +14,11 @@ router.delete('/pessoas/:id', PessoasController.delete);
 // Rotas do modelo Endereço
 
 const EnderecoController = require('../controllers/EnderecoController');
-router.get('/endereco', EnderecoController.showAll);
-router.get('/endereco/:id', EnderecoController.show);
-router.post('/endereco', EnderecoController.create);
-router.put('/endereco/:id', EnderecoController.update);
-router.delete('/endereco/:id', EnderecoController.delete);
+router.get('/enderecos', EnderecoController.showAll);
+router.get('/enderecos/:id', EnderecoController.show);
+router.post('/enderecos', EnderecoController.create);
+router.put('/enderecos/:id', EnderecoController.update);
+router.delete('/enderecos/:id', EnderecoController.delete);
 
 
 router.get ('/',(req, res)=> {

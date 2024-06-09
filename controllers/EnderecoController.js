@@ -1,12 +1,12 @@
-const { Endereco } = require('../models');
+const { Enderecos } = require('../models');
 require('dotenv').config();
 
 module.exports = class EnderecoController {
   static async showAll(req, res) {
     try {
-      const endereco = await Endereco.findAll();
+      const enderecos = await Enderecos.findAll();
       res.status(200).json({
-        data: endereco
+        data: enderecos
       });
     } catch (error) {
       res.status(500).json({
@@ -17,7 +17,7 @@ module.exports = class EnderecoController {
 
   static async show(req, res) {
     try {
-      const endereco = await Endereco.findByPk(req.params.id);
+      const endereco = await Enderecos.findByPk(req.params.id);
       if (!endereco) {
         res.status(404).json({
           error: 'Endereço não encontrado'
@@ -36,7 +36,12 @@ module.exports = class EnderecoController {
 
   static async create(req, res) {
     try {
-      const endereco = await Endereco.create(req.body);
+      const endereco = await Enderecos.create({
+        Rua: req.body.Rua,
+        Numero: req.body.Numero,
+        Cidade: req.body.Cidade,
+        Estado: req.body.Estado
+      });
       res.status(201).json({
         message: 'Endereço criado com sucesso!',
 //        data: endereco
@@ -50,7 +55,7 @@ module.exports = class EnderecoController {
 
   static async update(req, res) {
     try {
-      const endereco = await Endereco.findByPk(req.params.id);
+      const endereco = await Enderecos.findByPk(req.params.id);
       if (!endereco) {
         res.status(404).json({
           error: 'Endereço não encontrado'
@@ -71,7 +76,7 @@ module.exports = class EnderecoController {
 
   static async delete(req, res) {
     try {
-      const endereco = await Endereco.findByPk(req.params.id);
+      const endereco = await Enderecos.findByPk(req.params.id);
       if (!endereco) {
         res.status(404).json({
           error: 'Endereço não encontrado'
