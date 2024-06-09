@@ -40,7 +40,7 @@ module.exports = class PessoasController {
             });
             res.status(201).json({
                 message: 'Pessoa criada com sucesso!',
-                data: pessoa
+//                data: pessoa
             });
         } catch (e) {
             res.status(500).json({

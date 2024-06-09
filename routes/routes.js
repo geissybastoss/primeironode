@@ -1,15 +1,24 @@
 const express = require('express');
 const router = express.Router();
 
-// Importe os controladores necessários aqui
-const PessoasController = require('../controllers/PessoasController');
+// Rotas do modelo Pessoas
 
-// Defina as rotas aqui
+const PessoasController = require('../controllers/PessoasController')
 router.get('/pessoas', PessoasController.showAll);
 router.get('/pessoas/:id', PessoasController.show);
 router.post('/pessoas', PessoasController.create);
 router.put('/pessoas/:id', PessoasController.update);
 router.delete('/pessoas/:id', PessoasController.delete);
+
+
+// Rotas do modelo Endereço
+
+const EnderecoController = require('../controllers/EnderecoController');
+router.get('/endereco', EnderecoController.showAll);
+router.get('/endereco/:id', EnderecoController.show);
+router.post('/endereco', EnderecoController.create);
+router.put('/endereco/:id', EnderecoController.update);
+router.delete('/endereco/:id', EnderecoController.delete);
 
 
 router.get ('/',(req, res)=> {
